@@ -21,19 +21,19 @@ Returns and factors are both expressed in percent per month, so the units are co
 
 | Variable | Coefficient | t-stat | p-value | Significance |
 |---|---|---|---|---|
-| **Alpha ($\alpha$)** | +0.1214 %/month | 0.20 | 0.844 | Not significant |
-| **MKT_RF ($\beta_{mkt}$)** | 1.4856 | 11.98 | 0.000 | *** (p<0.01) |
-| **SMB ($\beta_{smb}$)** | 1.1364 | 5.24 | 0.000 | *** (p<0.01) |
-| **HML ($\beta_{hml}$)** | −0.7121 | −4.98 | 0.000 | *** (p<0.01) |
+| **Alpha ($\alpha$)** | +0.1222 %/month | 0.20 | 0.843 | Not significant |
+| **MKT_RF ($\beta_{mkt}$)** | 1.4851 | 11.96 | 0.000 | *** (p<0.01) |
+| **SMB ($\beta_{smb}$)** | 1.1376 | 5.23 | 0.000 | *** (p<0.01) |
+| **HML ($\beta_{hml}$)** | −0.7098 | −4.95 | 0.000 | *** (p<0.01) |
 
 **Model diagnostics**
 
-- $R^2$: **0.7633** — the three FF3 factors explain about 76.3% of the fund's return variation
-- Annualized alpha: **+146 bps/year** (+1.46%/year), computed as the monthly intercept × 12
+- $R^2$: **0.7628** — the three FF3 factors explain about 76.3% of the fund's return variation
+- Annualized alpha: **+147 bps/year** (+1.47%/year), computed as the monthly intercept × 12
 
 ## Key Interpretations
 
-1. **No significant active premium.** The annualized alpha of +146 bps is statistically indistinguishable from zero ($p = 0.844$). We cannot reject the null of zero alpha, so there is no evidence of risk-adjusted outperformance once style factors are controlled for.
+1. **No significant active premium.** The annualized alpha of +147 bps is statistically indistinguishable from zero ($p = 0.843$). We cannot reject the null of zero alpha, so there is no evidence of risk-adjusted outperformance once style factors are controlled for.
 2. **Aggressive market exposure ($\beta_{mkt} = 1.49$).** The fund amplifies broad market moves by roughly 1.5x, consistent with a concentrated, high-beta mandate.
 3. **Small-cap and growth tilt.** The positive SMB loading (1.14) reflects a systematic tilt toward smaller companies, while the negative HML loading (−0.71) confirms a deep growth tilt — high-valuation, low book-to-market firms priced on future rather than current earnings.
 4. **What the model does not explain.** The remaining ~24% of return variation is idiosyncratic: stock selection and concentrated positions the FF3 factors do not capture.
@@ -42,6 +42,7 @@ Returns and factors are both expressed in percent per month, so the units are co
 
 - Standard errors are non-robust (OLS default). Monthly factor residuals can be heteroskedastic and autocorrelated; re-estimating with HAC standard errors (`cov_type='HAC'`, `maxlags=3`) is a useful robustness check.
 - The 24-month rolling regressions estimate four parameters from 24 observations, so the rolling betas are noisy and should be read as directional, not precise.
+- Because Yahoo Finance re-adjusts historical prices for dividends and splits over time, re-running the notebook can shift the estimates by a few basis points. The figures above correspond to the outputs saved in the committed notebook.
 - This is a single fund over a single, unusually volatile sample (2018–2024, spanning the COVID drawdown and the 2021 growth unwind). Results should not be generalized to active ETFs as a class.
 
 ## Data Sources
